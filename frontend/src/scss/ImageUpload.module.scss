@@ -1,0 +1,47 @@
+.uploadImage,
+.howItWorks {
+  font-family: 'Inter';
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.uploadImage {
+  color: #000000;
+  background-color: #ccc5b9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  width: 130px;
+  margin-right: -230px;
+}
+
+.howItWorks {
+  color: #fffcf2;
+  background-color: #403d39;
+  height: 45px;
+  width: 140px;
+}
+
+.callToAction {
+  font-family: 'Climate Crisis', cursive;
+  color: #252422;
+  font-size: 48px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  column-gap: 40px;
+  margin: 10%;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+}
