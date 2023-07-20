@@ -1,0 +1,15 @@
+.container {
+  h1 {
+    font-family: 'Climate Crisis';
+    font-size: 48px;
+    color: #403d39;
+    margin-bottom: 3%;
+  }
+  margin: 10%;
+}
+
+.questAndAnsw {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 100px;
+}

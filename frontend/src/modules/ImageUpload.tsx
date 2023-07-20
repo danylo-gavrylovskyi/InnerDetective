@@ -1,11 +1,18 @@
 import React, { ChangeEvent } from 'react';
+import axios from 'axios';
 
 import styles from '../scss/ImageUpload.module.scss';
 
 export const ImageUpload: React.FC = () => {
-  const uploadImage = (event: ChangeEvent<HTMLInputElement>) => {
+  const uploadImage = async (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      //post request to /api/analyze
+      try {
+        const { data } = await axios.post('http://localhost:3001/api/analyze', {
+          image: JSON.stringify(URL.createObjectURL(event.target.files[0])),
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 

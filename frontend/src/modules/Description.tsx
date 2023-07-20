@@ -7,10 +7,7 @@ export const Description: React.FC = () => {
     <section className={styles.desciption}>
       <p className={styles.descrLeft}>A Safe Way To Check</p>
       <p className={styles.descrRight}>
-        Upload your images and our sophisticated
-        <br />
-        algorithm will check for adult content. Keep it
-        <br />
+        Upload your images and our sophisticated algorithm will check for adult content. Keep it
         clean and have fun while making sure your online space is safe.
       </p>
     </section>

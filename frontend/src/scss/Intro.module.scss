@@ -31,3 +31,24 @@
   font-size: 80px;
   padding: 10px 20px;
 }
+
+@media screen and (min-width: 810px) and (max-width: 1199px) {
+  .unleashYour,
+  .innerDetective {
+    font-size: 64px;
+  }
+}
+
+@media screen and (max-width: 809px) {
+  .unleashYour,
+  .innerDetective {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .unleashYour,
+  .innerDetective {
+    font-size: 30px;
+  }
+}

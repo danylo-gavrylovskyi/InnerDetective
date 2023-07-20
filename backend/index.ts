@@ -1,5 +1,15 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
+import cors from 'cors';
+
+//@ts-ignore
+import { analyzeImage } from './controllers/analyzeImage.ts';
 
 const app = express();
 app.use(express.json());
-app.listen(666, () => console.log('Server working'));
+app.use(cors());
+app.listen(3001, () => console.log('Server working'));
+
+app.post('/api/analyze', (req: Request, res: Response) => {
+  const imageData = analyzeImage(req.body.image);
+  return res.json(imageData);
+});
