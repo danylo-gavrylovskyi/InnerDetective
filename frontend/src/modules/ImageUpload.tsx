@@ -7,9 +7,9 @@ export const ImageUpload: React.FC = () => {
   const uploadImage = async (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       try {
-        const { data } = await axios.post('http://localhost:3001/api/analyze', {
-          image: JSON.stringify(URL.createObjectURL(event.target.files[0])),
-        });
+        const formData = new FormData();
+        formData.append('image', event.target.files[0]);
+        const { data } = await axios.post('http://localhost:3001/api/analyze', formData);
       } catch (error) {
         console.log(error);
       }
