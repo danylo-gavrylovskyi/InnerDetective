@@ -15,7 +15,7 @@
 .desciption {
   display: flex;
   align-items: center;
-  margin: 45% 10% 0 10%;
+  margin: 10% 10% 0 10%;
   height: 100%;
 }
 
@@ -23,64 +23,5 @@
   .desciption {
     flex-direction: column;
     align-items: flex-start;
-  }
-  .descrRight {
-    margin: 0;
-    width: 100%;
-    margin-top: 3%;
-  }
-}
-
-@media screen and (max-width: 1700px) {
-  .desciption {
-    margin-top: 50%;
-  }
-}
-
-@media screen and (max-width: 1570px) {
-  .desciption {
-    margin-top: 60%;
-  }
-}
-
-@media screen and (max-width: 1320px) {
-  .desciption {
-    margin-top: 65%;
-  }
-}
-
-@media screen and (max-width: 1230px) {
-  .desciption {
-    margin-top: 70%;
-  }
-}
-
-@media screen and (max-width: 1120px) {
-  .desciption {
-    margin-top: 80%;
-  }
-}
-
-@media screen and (max-width: 1010px) {
-  .desciption {
-    margin-top: 90%;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .desciption {
-    margin-top: 100%;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .desciption {
-    margin-top: 120%;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .desciption {
-    margin-top: 130%;
   }
 }

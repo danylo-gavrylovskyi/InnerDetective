@@ -1,0 +1,32 @@
+.mainDiv {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  img {
+    width: 50%;
+    border-radius: 20px;
+  }
+  button {
+    background-color: #403d39;
+    color: #fffcf2;
+    font-family: 'Inter';
+    padding: 4% 10%;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    margin-top: 5%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: #55514c;
+    }
+  }
+}

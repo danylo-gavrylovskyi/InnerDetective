@@ -1,5 +1,5 @@
 .uploadImage,
-.howItWorks {
+.submit {
   font-family: 'Inter';
   font-size: 16px;
   border-radius: 8px;
@@ -18,13 +18,21 @@
   height: 35px;
   width: 130px;
   margin-right: -230px;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: #aca69b;
+  }
 }
 
-.howItWorks {
+.submit {
   color: #fffcf2;
   background-color: #403d39;
   height: 45px;
   width: 140px;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: #55514c;
+  }
 }
 
 .callToAction {

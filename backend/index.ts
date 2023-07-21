@@ -1,7 +1,6 @@
 import express, { Request, Response } from 'express';
 import multer from 'multer';
 import cors from 'cors';
-import fs from 'fs';
 
 //@ts-ignore
 import { analyzeImage } from './controllers/analyzeImage.ts';
