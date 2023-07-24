@@ -7,6 +7,7 @@ import { config } from 'dotenv';
 import { registration, login, getMe } from './controllers/auth.js';
 import { registrationValidation } from './validations/registrationValidation.js';
 import { analyze } from './controllers/analyze.js';
+import { getIdFromToken } from './utils/getIdFromToken.js';
 
 config();
 const app = express();
@@ -20,6 +21,8 @@ await mongoose
   .catch((err) => console.error(err));
 
 const upload = multer({ dest: 'uploads/' });
+
+app.get('./api/me', getIdFromToken, getMe);
 
 app.post('./api/login', login);
 

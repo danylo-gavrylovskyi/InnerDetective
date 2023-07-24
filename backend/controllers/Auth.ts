@@ -68,4 +68,16 @@ export const registration = async (req: Request, res: Response) => {
   }
 };
 
-export const getMe = async (req: Request, res: Response) => {};
+export const getMe = async (req: Request, res: Response) => {
+  try {
+    const user = await UserSchema.findById(req.body.userId);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    const { password, ...userData } = user;
+    return res.status(200).json({ ...userData });
+  } catch (err) {
+    console.error(err);
+    return res.status(403).json({
+      message: 'No access',
+    });
+  }
+};
