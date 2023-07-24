@@ -2,8 +2,35 @@ import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { config } from 'dotenv';
 
-import UserSchema from '../models/User';
+import UserSchema from '../models/User.js';
+
+config();
+
+export const login = async (req: Request, res: Response) => {
+  try {
+    const user = await UserSchema.findOne({ username: req.body.username });
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    const isPasswordCorrect = await bcrypt.compare(user.password, req.body.password);
+    if (!isPasswordCorrect) return res.status(400).json({ message: 'Incorrect login or password' });
+
+    const token = jwt.sign({ _id: user._id }, `${process.env.JWTSECRETKEY}`, {
+      expiresIn: process.env.JWTEXPIRESIN,
+    });
+
+    const { password, ...userData } = user;
+    return res.status(200).json({
+      ...userData,
+      token,
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({
+      message: 'Login failed',
+    });
+  }
+};
 
 export const registration = async (req: Request, res: Response) => {
   try {
@@ -35,10 +62,10 @@ export const registration = async (req: Request, res: Response) => {
     });
   } catch (err) {
     console.error(err);
-    return res.status(400).json({
-      message: 'Registration error',
+    return res.status(500).json({
+      message: 'Registration failed',
     });
   }
 };
 
-const login = async (req: Request, res: Response) => {};
+export const getMe = async (req: Request, res: Response) => {};

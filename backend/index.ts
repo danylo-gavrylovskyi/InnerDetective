@@ -4,8 +4,9 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import { config } from 'dotenv';
 
-import { analyzeImage } from './utils/analyzeImage.js';
-import { registration } from './controllers/Auth.js';
+import { registration, login, getMe } from './controllers/auth.js';
+import { registrationValidation } from './validations/registrationValidation.js';
+import { analyze } from './controllers/analyze.js';
 
 config();
 const app = express();
@@ -20,18 +21,8 @@ await mongoose
 
 const upload = multer({ dest: 'uploads/' });
 
-app.post('./api/registration', registration);
+app.post('./api/login', login);
 
-app.post('/api/analyze', upload.single('image'), async (req: Request, res: Response) => {
-  try {
-    const imagePath = req.file?.path;
-    if (!imagePath) return res.status(400).json({ message: 'No image file' });
-    const imageData = await analyzeImage(imagePath);
-    return res.json(imageData);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      message: 'Cant get image detections',
-    });
-  }
-});
+app.post('./api/registration', registrationValidation, registration);
+
+app.post('/api/analyze', upload.single('image'), analyze);
