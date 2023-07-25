@@ -22,7 +22,7 @@ export const ImageResults: React.FC = () => {
     <div className={styles.mainDiv}>
       <Header />
       <div className={styles.container}>
-        <img src={imageUrl} alt="image to analyze"></img>
+        <img src={imageUrl} alt="analyze"></img>
         <div>
           <Detections {...imageData} />
           <Link to="/">

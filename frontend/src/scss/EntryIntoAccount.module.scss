@@ -1,0 +1,31 @@
+.container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc5b9;
+}
+
+.paper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  padding: 1% 0 1% 0;
+}
+
+.loginFont {
+  font-weight: bold;
+  font-family: 'Inter';
+  font-size: 23px;
+}
+
+.signUpBtn {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
