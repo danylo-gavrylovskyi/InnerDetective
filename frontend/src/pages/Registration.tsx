@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextField, Paper, Button, ThemeProvider, createTheme } from '@mui/material';
 import { brown } from '@mui/material/colors';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { AxiosError } from 'axios';
 
@@ -40,16 +40,22 @@ export const Registration: React.FC = () => {
     },
   });
 
+  const navigate = useNavigate();
+
   const onSubmit: SubmitHandler<{ username: string; email: string; password: string }> = async (
     values,
   ) => {
     try {
       const { data } = await axios.post('/api/registration', values);
+      localStorage.setItem('token', data.token);
+      navigate('/');
     } catch (error) {
-      if (error instanceof AxiosError) {
-        error.response?.data.map((err: IValidationError) => {
+      if (error instanceof AxiosError && Array.isArray(error.response?.data)) {
+        error.response?.data.forEach((err: IValidationError) => {
           setError(`${err.path}`, { message: err.msg });
         });
+      } else if (error instanceof AxiosError) {
+        throw new Error(error.response?.data);
       }
     }
   };
@@ -67,14 +73,14 @@ export const Registration: React.FC = () => {
             label="Username"
             margin="normal"></TextField>
           <TextField
-            {...register('username', { required: 'Enter your e-mail' })}
+            {...register('email', { required: 'Enter your e-mail' })}
             helperText={errors.email?.message}
             error={Boolean(errors.email?.message)}
             style={{ width: '100%' }}
             label="E-mail"
             margin="normal"></TextField>
           <TextField
-            {...register('username', { required: 'Enter your password' })}
+            {...register('password', { required: 'Enter your password' })}
             helperText={errors.password?.message}
             error={Boolean(errors.password?.message)}
             style={{ width: '100%' }}

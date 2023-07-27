@@ -12,7 +12,7 @@ export const login = async (req: Request, res: Response) => {
   try {
     const user = await UserSchema.findOne({ username: req.body.username });
     if (!user) return res.status(404).json({ message: 'User not found' });
-    const isPasswordCorrect = await bcrypt.compare(user.password, req.body.password);
+    const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password);
     if (!isPasswordCorrect) return res.status(400).json({ message: 'Incorrect login or password' });
 
     const token = jwt.sign({ _id: user._id }, `${process.env.JWTSECRETKEY}`, {

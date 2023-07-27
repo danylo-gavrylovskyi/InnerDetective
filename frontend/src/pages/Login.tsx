@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextField, Paper, Button, ThemeProvider, createTheme } from '@mui/material';
 import { brown } from '@mui/material/colors';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { AxiosError } from 'axios';
 
@@ -30,12 +30,17 @@ export const Login: React.FC = () => {
     },
   });
 
+  const navigate = useNavigate();
+
   const onSubmit: SubmitHandler<{ username: string; password: string }> = async (values) => {
     try {
       const { data } = await axios.post('/api/login', values);
-      console.log(data);
-    } catch (err) {
-      if (err instanceof AxiosError) setError('username', { message: err.response?.data.message });
+      localStorage.setItem('token', data.token);
+      navigate('/');
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        setError('username', { message: error.response?.data.message });
+      }
     }
   };
 
