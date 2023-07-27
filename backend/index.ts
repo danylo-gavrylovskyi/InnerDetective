@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import multer from 'multer';
 import cors from 'cors';
 import mongoose from 'mongoose';
@@ -22,10 +22,10 @@ await mongoose
 
 const upload = multer({ dest: 'uploads/' });
 
-app.get('./api/me', getIdFromToken, getMe);
+app.get('/api/me', getIdFromToken, getMe);
 
-app.post('./api/login', login);
+app.post('/api/login', login);
 
-app.post('./api/registration', registrationValidation, registration);
+app.post('/api/registration', registrationValidation, registration);
 
 app.post('/api/analyze', upload.single('image'), analyze);
