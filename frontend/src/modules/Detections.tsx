@@ -47,7 +47,7 @@ export const Detections: React.FC<IDetectionsProps> = ({
       </p>
       <p>
         Spoof is{' '}
-        <span style={{ color: `${colorChecker(adult)}` }}>
+        <span style={{ color: `${colorChecker(spoof)}` }}>
           {spoof.replace('_', ' ').toLocaleLowerCase()}
         </span>
       </p>

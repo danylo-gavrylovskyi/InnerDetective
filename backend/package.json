@@ -17,7 +17,8 @@
   },
   "type": "module",
   "scripts": {
-    "start:dev": "nodemon index.ts"
+    "start:dev": "nodemon index.ts",
+    "start": "node index.ts"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

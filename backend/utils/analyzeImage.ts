@@ -11,7 +11,6 @@ export const analyzeImage = async (image: string) => {
         console.error(err);
       }
     });
-    console.log(detections);
     return detections;
   } catch (error) {
     console.error(error);

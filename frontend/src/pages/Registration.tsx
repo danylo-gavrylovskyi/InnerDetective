@@ -50,13 +50,10 @@ export const Registration: React.FC = () => {
       localStorage.setItem('token', data.token);
       navigate('/');
     } catch (error) {
-      if (error instanceof AxiosError && Array.isArray(error.response?.data)) {
-        error.response?.data.forEach((err: IValidationError) => {
-          setError(`${err.path}`, { message: err.msg });
-        });
-      } else if (error instanceof AxiosError) {
-        throw new Error(error.response?.data);
-      }
+      const errorsArray = error as AxiosError<any, any>;
+      errorsArray.response?.data.forEach((err: IValidationError) => {
+        setError(`${err.path}`, { message: err.msg });
+      });
     }
   };
 

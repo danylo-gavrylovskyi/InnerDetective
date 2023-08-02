@@ -38,9 +38,8 @@ export const Login: React.FC = () => {
       localStorage.setItem('token', data.token);
       navigate('/');
     } catch (error) {
-      if (error instanceof AxiosError) {
-        setError('username', { message: error.response?.data.message });
-      }
+      const err = error as AxiosError<any, any>;
+      setError('username', { message: err.response?.data.message });
     }
   };
 
